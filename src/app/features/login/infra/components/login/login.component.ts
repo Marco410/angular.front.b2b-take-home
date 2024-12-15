@@ -8,19 +8,33 @@ import {
 import { AplazoButtonComponent } from '@apz/shared-ui/button';
 import { AplazoLogoComponent } from '@apz/shared-ui/logo';
 import { LoginUseCase } from '../../../application/login.usecase';
+import { AplazoInputComponent } from '../../../../shared/components/input/src';
+import { CommonModule } from '@angular/common';
+import { AplzValidations } from '../../../../shared/utils/email-validation';
+import { AplazoNoWhiteSpaceDirective } from '../../../../../../../projects/shared-ui/src/lib/directives/no-white-space.directive';
+import { AplazoLowercaseDirective } from '../../../../../../../projects/shared-ui/src/lib/directives/lower-case-text.directive';
 
 @Component({
   standalone: true,
   selector: 'app-login',
   templateUrl: './login.component.html',
-  imports: [ReactiveFormsModule, AplazoButtonComponent, AplazoLogoComponent],
+  styleUrls: ['./login.component.scss'],
+  imports: [
+    CommonModule,
+    AplazoInputComponent,
+    ReactiveFormsModule,
+    AplazoButtonComponent,
+    AplazoLogoComponent,
+    AplazoNoWhiteSpaceDirective,
+    AplazoLowercaseDirective,
+  ],
 })
 export class LoginComponent {
   readonly loginUseCase = inject(LoginUseCase);
 
   readonly username = new FormControl<string>('', {
     nonNullable: true,
-    validators: [Validators.required, Validators.email],
+    validators: [Validators.required, AplzValidations.emailValidation],
   });
 
   readonly password = new FormControl<string>('', {
@@ -33,7 +47,27 @@ export class LoginComponent {
     password: this.password,
   });
 
+  isPasswordVisible: boolean = false;
+
+  togglePasswordVisibility(): void {
+    this.isPasswordVisible = !this.isPasswordVisible;
+  }
+
   login(): void {
+    this.form.markAllAsTouched();
+    if (!this.form.valid) {
+      for (let error in this.username.errors) {
+        console.log('error');
+        console.log(error);
+      }
+      return;
+    }
+    const username = this.form.get('username')?.value;
+    console.log('this.username.value');
+    console.log(username);
+    const password = this.form.get('password')?.value;
+    console.log('this.password.value');
+    console.log(password);
     this.loginUseCase
       .execute({
         username: this.username.value,
