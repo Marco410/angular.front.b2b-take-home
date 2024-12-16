@@ -56,18 +56,8 @@ export class LoginComponent {
   login(): void {
     this.form.markAllAsTouched();
     if (!this.form.valid) {
-      for (let error in this.username.errors) {
-        console.log('error');
-        console.log(error);
-      }
       return;
     }
-    const username = this.form.get('username')?.value;
-    console.log('this.username.value');
-    console.log(username);
-    const password = this.form.get('password')?.value;
-    console.log('this.password.value');
-    console.log(password);
     this.loginUseCase
       .execute({
         username: this.username.value,

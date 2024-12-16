@@ -3,18 +3,28 @@
     <nav
       class="flex flex-grow flex-shrink-0 justify-between items-center w-full"
     >
-      <h2 class="font-medium text-2xl">Layout Principal</h2>
+      <h2 class="font-medium text-2xl">{{ pageTitle }}</h2>
 
-      <button aplzButton aplzAppearance="basic" size="md" class="items-center">
+      <button
+        aplzButton
+        aplzAppearance="basic"
+        size="md"
+        class="items-center"
+        (click)="logOut()"
+      >
         <span class="lowercase font-light"> Cerrar sesión </span>
       </button>
     </nav>
   </aplz-ui-dash-header>
 
   <aplz-ui-dash-sidebar>
-    <a aplzSidenavLink [routerLink]="[appRoutes.home]"> Inicio </a>
+    <a aplzSidenavLink [routerLink]="[appRoutes.home]" [icon]="'home'">
+      Inicio
+    </a>
 
-    <a aplzSidenavLink [routerLink]="[appRoutes.historial]"> Historial </a>
+    <a aplzSidenavLink [routerLink]="[appRoutes.historial]" [icon]="'history'">
+      Historial
+    </a>
   </aplz-ui-dash-sidebar>
 
   <section class="w-full min-h-screen pb-36 bg-dark-background">

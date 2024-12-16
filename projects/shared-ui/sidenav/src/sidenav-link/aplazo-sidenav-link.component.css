@@ -21,3 +21,11 @@
 .aplazo-sidenav-link__icon--empty {
   @apply w-8 h-8;
 }
+
+.aplazo-sidenav-link__icon {
+  @apply inline-flex items-center justify-center me-2;
+}
+
+.aplazo-sidenav-link__icon mat-icon {
+  @apply w-6 h-6;
+}

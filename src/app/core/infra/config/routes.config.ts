@@ -7,3 +7,7 @@ export const ROUTE_CONFIG = {
 
 export type RouteKey = keyof typeof ROUTE_CONFIG;
 export type Route = (typeof ROUTE_CONFIG)[RouteKey];
+
+export const ROUTE_API_CONFIG = {
+  login: 'auth_module/login/',
+} as const;

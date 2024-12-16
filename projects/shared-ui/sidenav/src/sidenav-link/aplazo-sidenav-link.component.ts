@@ -12,14 +12,14 @@ import {
 } from '@angular/core';
 import { RouterLinkActive, RouterModule } from '@angular/router';
 import { startWith, Subject, takeUntil, tap } from 'rxjs';
-
+import { MatIconModule } from '@angular/material/icon';
 let nextUniqueId = 0;
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'a[aplzSidenavLink]',
   standalone: true,
-  imports: [NgIf, RouterModule],
+  imports: [NgIf, RouterModule, MatIconModule],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [
@@ -28,6 +28,9 @@ let nextUniqueId = 0;
     },
   ],
   template: `
+    <span class="aplazo-sidenav-link__icon" *ngIf="icon">
+      <mat-icon>{{ icon }}</mat-icon>
+    </span>
     <span class="aplazo-sidenav-link__label aplazo-sidenav-link__label-pretty">
       <ng-content></ng-content>
     </span>
@@ -48,6 +51,8 @@ export class AplazoSidenavLinkComponent implements OnInit, OnDestroy {
   };
 
   #uid = `aplz-ui-sidenav-link--${nextUniqueId++}`;
+
+  @Input() icon?: string;
 
   @Input()
   set id(value: string) {
