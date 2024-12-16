@@ -10,4 +10,6 @@ export type Route = (typeof ROUTE_CONFIG)[RouteKey];
 
 export const ROUTE_API_CONFIG = {
   login: 'auth_module/login/',
+  orders_home: 'orders_module/home/',
+  branches: 'orders_module/branches/',
 } as const;

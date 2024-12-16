@@ -36,4 +36,23 @@
       font-weight: bold;
     }
   }
+
+  .box div:last-child {
+    margin-right: 100px;
+  }
+
+  form {
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .aplz-label {
+    background: red;
+  }
+}
+
+::ng-deep .aplz-input .aplz-label {
+  background: #f4f4f5 !important;
 }

@@ -1,7 +1,11 @@
 import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { ControlContainer, FormGroupDirective } from '@angular/forms';
-
+import {
+  ControlContainer,
+  FormControl,
+  FormGroupDirective,
+} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 /** AplazoInputComponent
  *
  *
@@ -11,7 +15,7 @@ import { ControlContainer, FormGroupDirective } from '@angular/forms';
   templateUrl: `./aplazo-input.component.html`,
   styleUrls: ['./aplazo-input.component.scss'],
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, ReactiveFormsModule],
   viewProviders: [
     {
       provide: ControlContainer,
@@ -20,9 +24,9 @@ import { ControlContainer, FormGroupDirective } from '@angular/forms';
   ],
 })
 export class AplazoInputComponent {
-  @Input() type: 'text' | 'number' | 'datetime' | 'password' = 'text';
+  @Input() type: 'text' | 'number' | 'datetime' | 'date' | 'password' = 'text';
   @Input() label: string;
   @Input() placeholder: string;
-  @Input() controlName: string;
+  @Input() control: FormControl = new FormControl();
   @Input() error: boolean;
 }
