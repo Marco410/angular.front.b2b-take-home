@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>PEDIDOS</h2>
+
+  <form [formGroup]="filters">
+    <label
+      ><span>{{ total }}</span> PEDIDOS</label
+    >
+    <aplz-input
+      type="date"
+      label="Fecha Inicial:"
+      placeholder="Fecha Inicial"
+      [control]="first_date"
+    ></aplz-input>
+    <aplz-input
+      type="date"
+      label="Fecha Final:"
+      placeholder="Fecha Final"
+      [control]="end_date"
+    ></aplz-input>
+    <button class="btn" (click)="clearFilters()">Limpiar filtros</button>
+  </form>
+
+  <small>Pasa el mouse sobre las columnas para hacer sort</small>
+  <aplz-table
+    [data]="orders$ | async"
+    [total]="total"
+    (pageChange)="onPageChanged($event)"
+    (sortChange)="sortChanged($event)"
+  ></aplz-table>
+</div>

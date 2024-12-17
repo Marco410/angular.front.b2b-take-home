@@ -41,10 +41,7 @@ export class HomeComponent implements OnInit {
       date: this.filters.value.date ?? '',
     });
 
-    this.getBranches({
-      branches: this.filters.value.branchId?.join(',') ?? '',
-      date: this.filters.value.date ?? '',
-    });
+    this.getBranches();
   }
 
   getTot(filters: BranchFilter): void {
@@ -63,7 +60,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getBranches(filters: BranchFilter): void {
+  getBranches(): void {
     this.#homeService.getBranches().subscribe({
       next: (branchData) => {
         this.branches = branchData.data[0].branches;

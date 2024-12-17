@@ -7,8 +7,6 @@ import {
 } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 /** AplazoInputComponent
- *
- *
  */
 @Component({
   selector: 'aplz-input',

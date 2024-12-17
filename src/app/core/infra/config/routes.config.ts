@@ -12,4 +12,5 @@ export const ROUTE_API_CONFIG = {
   login: 'auth_module/login/',
   orders_home: 'orders_module/home/',
   branches: 'orders_module/branches/',
+  history: 'orders_module/history/',
 } as const;

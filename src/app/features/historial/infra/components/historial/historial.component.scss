@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 20px;
+
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+
+  form {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    label {
+      font-weight: 500;
+      font-size: 20px;
+      span {
+        font-weight: bold;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .btn {
+    cursor: pointer;
+    background-color: #7ae3a1;
+    border-radius: 8px;
+    padding: 7px 30px;
+    font-size: 13px;
+  }
+
+  small {
+    color: #898e8f;
+    margin-top: 20px;
+  }
+}
+
+::ng-deep .aplz-input .aplz-label {
+  background: #f4f4f5 !important;
+}
