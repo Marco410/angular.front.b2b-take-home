@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, take, tap } from 'rxjs';
+import { catchError, Observable, take, tap } from 'rxjs';
 import { ROUTE_CONFIG } from '../../../core/infra/config/routes.config';
 import { Credentials } from '../domain/entities/credentials';
 import { LoginRepository } from '../domain/repositories/login.repository';
@@ -22,11 +22,18 @@ export class LoginUseCase {
 
       return this.#repository.authenticate(credentials).pipe(
         tap((loginSuccess) => {
-          if (loginSuccess) {
-            this.#router.navigate([ROUTE_CONFIG.app, ROUTE_CONFIG.home]);
+          if (!loginSuccess) {
+            throw new Error('Autenticación fallida');
           }
-        }),
 
+          this.#router.navigate([ROUTE_CONFIG.app, ROUTE_CONFIG.home]);
+        }),
+        catchError((error) => {
+          this.#toastr.error(
+            'Ocurrió un error inesperado, intente de nuevo más tarde.'
+          );
+          throw error;
+        }),
         take(1)
       );
     } catch (error) {

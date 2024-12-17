@@ -1,14 +1,10 @@
 import { inject, Injectable } from '@angular/core';
-import { catchError, mapTo, Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { Credentials } from '../../domain/entities/credentials';
 import { LoginRepository } from '../../domain/repositories/login.repository';
 import { BaseService } from '../../../../core/dominio/services/base.service';
 import { ROUTE_API_CONFIG } from '../../../../core/infra/config/routes.config';
-import {
-  APLZ_AUTH_REFRESH_TOKEN,
-  APLZ_AUTH_TOKEN,
-  TokenResponse,
-} from '../../domain/entities/tokens';
+
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
 
